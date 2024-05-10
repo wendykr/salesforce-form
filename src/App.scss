@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: SFS, Arial, sans-serif;
+  background-color: #f5f7fa;
+}
+
+.container {
+  margin: 100px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 360px;
+}
+
+.logo {
+  max-width: 180px;
+  max-height: 113px;
+}
