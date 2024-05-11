@@ -46,13 +46,6 @@ export const Form = () => {
           {
             answer.length > 0 && answer.map(answer => <option className="option" value={answer.id} key={answer.id}>{answer.text}</option>)
           }
-          {/* <option className="option" value="asw1">In what city were you born?</option>
-          <option className="option" value="asw2">What is your mother's maiden name?</option>
-          <option className="option" value="asw3">What is your pet's name?</option>
-          <option className="option" value="asw4">What was your childhood nickname?</option>
-          <option className="option" value="asw5">In what city did you meet your spouse/significant other?</option>
-          <option className="option" value="asw6">What is the name of your favorite childhood friend?</option>
-          <option className="option" value="asw7">In what city was your first job?</option> */}
         </select>
       </label>
 
