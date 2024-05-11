@@ -15,10 +15,18 @@
   margin-top: 8px;
   display: block;
   padding: 12px;
-  font-size: 14px;
+  font-size: 13px;
   width: 100%;
   border: 1px solid #969492;
   border-radius: 4px;
+}
+
+.select {
+  appearance: none;
+  padding-left: 30px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23888" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
 .input:focus, .select:focus, .password:focus {
@@ -26,11 +34,6 @@
   border: 1px solid #1589ee;
   outline: 0px;
   box-shadow: #0070d2 0px 0px 3px;
-}
-
-.checkbox {
-  margin-right: 8px;
-  border-radius: 4px;
 }
 
 .button {
@@ -46,6 +49,12 @@
   &:hover {
     background-color: #005fb2;
   }
+
+  &:disabled {
+    background-color: #e6e6e6;
+    color: #737373;
+    cursor: inherit;
+  }
 }
 
 label {
@@ -58,4 +67,49 @@ label {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.mark {
+  color: #ff0000;
+}
+
+.small {
+  font-size: 13px;
+}
+
+.footer {
+  font-size: 12px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.rule {
+  margin: 0;
+  padding-left: 0px;
+  font-size: 13px;
+  list-style-type: none;
+}
+
+.item {
+  margin: 6px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.icon-circle {
+  font-size: 14px;
+  color: #9dadc0;
+}
+
+.check {
+  color: green;
 }
