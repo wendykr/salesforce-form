@@ -35,6 +35,9 @@ export const Form = () => {
   const [isInvalidPasswordLetter, setIsInvalidPasswordLetter] = useState<boolean>(true);
   const [isInvalidPasswordNumber, setIsInvalidPasswordNumber] = useState<boolean>(true);
 
+  const validationStyledPassword = isInvalidPasswordCharacter || isInvalidPasswordLetter || isInvalidPasswordNumber;
+  const validationStyledPasswordConfirm = registrationData.password !== registrationData.passwordConfirm;
+
   useEffect(() => {
     if (registrationData.password === '' ||
         registrationData.passwordConfirm === '' ||
@@ -147,6 +150,14 @@ export const Form = () => {
           value={registrationData.password}
           onChange={handleChangePassword}
         />
+        {
+          (registrationData.password.length > 0) &&
+            <span className={`validation__text ${validationStyledPassword ? 'red' : 'green'}`}>
+              {
+                validationStyledPassword ? 'Too weak' : 'Good'
+              }
+            </span>
+        }
       </label>
 
       <label><span className="mark">*</span> Confirm New Password
@@ -157,6 +168,14 @@ export const Form = () => {
           value={registrationData.passwordConfirm}
           onChange={handleChangePasswordConfirm}
         />
+        {
+          (registrationData.passwordConfirm.length > 0) &&
+          <span className={`validation__text ${validationStyledPasswordConfirm ? 'red' : 'green'}`}>
+              {
+                validationStyledPasswordConfirm ? 'Passwords don\'t match' : 'Match'
+              }
+            </span>
+        }
       </label>
 
       <label>Security Question
