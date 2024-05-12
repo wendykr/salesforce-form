@@ -1,4 +1,4 @@
-export const answerData = [
+export const questionData = [
   {
     id: 1,
     text: 'In what city were you born?'

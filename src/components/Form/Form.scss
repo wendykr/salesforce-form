@@ -9,6 +9,19 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  &__header, &__footer {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &__header {
+    font-size: 13px;
+  }
+
+  &__footer {
+    font-size: 12px;
+  }
 }
 
 .input, .select, .password {
@@ -73,23 +86,6 @@ label {
   color: #ff0000;
 }
 
-.small {
-  font-size: 13px;
-}
-
-.footer {
-  font-size: 12px;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-p {
-  margin: 0;
-  line-height: 1.5;
-}
-
 .rule {
   margin: 0;
   padding-left: 0px;
@@ -103,13 +99,18 @@ p {
   flex-direction: row;
   gap: 8px;
   align-items: center;
+
+  &.check {
+    color: #008000;
+  }
 }
 
 .icon-circle {
   font-size: 14px;
   color: #9dadc0;
+
+  &.check {
+    color: #008000;
+  }
 }
 
-.check {
-  color: green;
-}
