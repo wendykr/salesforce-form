@@ -144,7 +144,7 @@ export const Form = () => {
 
       <label><span className="mark">*</span> New Password
         <input
-          className="password"
+          className={`password ${registrationData.password.length > 0 ? validationStyledPassword ? 'red' : 'green' : ''}`}
           type="password"
           name="password"
           value={registrationData.password}
@@ -162,7 +162,7 @@ export const Form = () => {
 
       <label><span className="mark">*</span> Confirm New Password
         <input
-          className="password"
+          className={`password ${registrationData.passwordConfirm.length > 0 ? validationStyledPasswordConfirm ? 'red' : 'green' : ''}`}
           type="password"
           name="passwordConfirm"
           value={registrationData.passwordConfirm}

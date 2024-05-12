@@ -32,6 +32,14 @@
   width: 100%;
   border: 1px solid #969492;
   border-radius: 4px;
+
+  &.red {
+    border: 1px solid rgb(255, 0, 0);
+  }
+
+  &.green {
+    border: 1px solid #008000;
+  }
 }
 
 .select {
@@ -47,6 +55,14 @@
   border: 1px solid #1589ee;
   outline: 0px;
   box-shadow: #0070d2 0px 0px 3px;
+
+  &.red {
+    border: 1px solid rgb(255, 0, 0);
+  }
+
+  &.green {
+    border: 1px solid #008000;
+  }
 }
 
 .button {
@@ -123,10 +139,10 @@ label {
   right: 0;
 
   &.red {
-    color: red;
+    color: #ff0000;
   }
 
   &.green {
-    color: green;
+    color: #008000;
   }
 }
