@@ -4,6 +4,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { FaRegCircle } from "react-icons/fa";
 import { formatDate } from '../../helpers/helpers';
 import { questionData } from '../../constants/questions';
+import { Button } from '../Button/Button';
 
 interface RegistrationDataStructure {
   password: string;
@@ -200,11 +201,7 @@ export const Form = () => {
         />
       </label>
 
-      <button
-        className="button"
-        disabled={isButtonDisabled}
-        onClick={handleClick}>Change Password
-      </button>
+      <Button isButtonDisabled={isButtonDisabled} handleClick={handleClick} />
 
       <p className="form__footer">Password was last changed on {formatDate(new Date())}</p>
     </div>

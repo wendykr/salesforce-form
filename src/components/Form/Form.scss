@@ -67,27 +67,6 @@
   }
 }
 
-.button {
-  padding: 12px 24px;
-  background-color: #0070d2;
-  color: #ffffff;
-  font-size: 14px;
-  border-radius: 4px;
-  transition: all 0.1s ease 0s;
-  border: 1px solid transparent;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #005fb2;
-  }
-
-  &:disabled {
-    background-color: #e6e6e6;
-    color: #737373;
-    cursor: inherit;
-  }
-}
-
 label {
   margin: 0px 0px 8px;
   font-size: 13px;
