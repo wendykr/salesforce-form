@@ -57,11 +57,13 @@
   box-shadow: #0070d2 0px 0px 3px;
 
   &.red {
-    border: 1px solid rgb(255, 0, 0);
+    border: 1px solid #ff0000;
+    box-shadow: #b00 0px 0px 3px;
   }
 
   &.green {
     border: 1px solid #008000;
+    box-shadow: #003c00 0px 0px 3px;
   }
 }
 
