@@ -29,9 +29,11 @@ export const Form = () => {
 
   const [question] = useState<QuestionStructure[]>(questionData);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+
   const [isInvalidPassword, setIsInvalidPassword] = useState<boolean>(false);
   const [isInvalidPasswordConfirm, setIsInvalidPasswordConfirm] = useState<boolean>(false);
   const [isInvalidAnswer, setIsInvalidAnswer] = useState<boolean>(false);
+
   const [isInvalidPasswordCharacter, setIsInvalidPasswordCharacter] = useState<boolean>(true);
   const [isInvalidPasswordLetter, setIsInvalidPasswordLetter] = useState<boolean>(true);
   const [isInvalidPasswordNumber, setIsInvalidPasswordNumber] = useState<boolean>(true);
@@ -45,14 +47,17 @@ export const Form = () => {
         registrationData.answer === '' ||
         isInvalidPassword ||
         isInvalidPasswordConfirm ||
-        isInvalidAnswer
+        isInvalidAnswer ||
+        isInvalidPasswordCharacter ||
+        isInvalidPasswordLetter ||
+        isInvalidPasswordNumber
       ) {
       setIsButtonDisabled(true);
     } else {
       setIsButtonDisabled(false);
     }
 
-  }, [registrationData, isInvalidPassword, isInvalidPasswordConfirm, isInvalidAnswer])
+  }, [registrationData, isInvalidPassword, isInvalidPasswordConfirm, isInvalidAnswer, isInvalidPasswordCharacter, isInvalidPasswordLetter, isInvalidPasswordNumber])
 
   const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRegistrationData({ ...registrationData, password: event.target.value.trim() });
