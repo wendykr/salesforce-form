@@ -55,7 +55,7 @@ export const Form = () => {
 
   const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRegistrationData({ ...registrationData, password: event.target.value.trim() });
-    (event.target.value.trim().length > 8)
+    (event.target.value.trim().length >= 8)
       ?
         setIsInvalidPasswordCharacter(false)
       :
