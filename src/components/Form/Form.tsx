@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import './Form.scss';
-import { FaCheckCircle } from "react-icons/fa";
-import { FaRegCircle } from "react-icons/fa";
 import { formatDate } from '../../helpers/helpers';
 import { questionData } from '../../constants/questions';
 import { Button } from '../Button/Button';
+import { Rules } from '../Rules/Rules';
 
 interface RegistrationDataStructure {
   password: string;
@@ -118,35 +117,11 @@ export const Form = () => {
   return (
     <div className="form">
       <p className="form__header">Enter a new password for <span className="bold">kiwebow991@losvtn.com</span>. Make sure to include at least:</p>
-      <ul className="rule">
-        <li className={`item ${isInvalidPasswordCharacter ? '' : 'check'}`}>
-          {
-            isInvalidPasswordCharacter ?
-              <FaRegCircle className="icon-circle" />
-              :
-              <FaCheckCircle className="icon-circle check" />
-          }
-          8 characters
-        </li>
-        <li className={`item ${isInvalidPasswordLetter ? '' : 'check'}`}>
-          {
-            isInvalidPasswordLetter ?
-              <FaRegCircle className="icon-circle" />
-              :
-              <FaCheckCircle className="icon-circle check" />
-          }
-          1 uppercase letter
-        </li>
-        <li className={`item ${isInvalidPasswordNumber ? '' : 'check'}`}>
-          {
-            isInvalidPasswordNumber ?
-              <FaRegCircle className="icon-circle" />
-              :
-              <FaCheckCircle className="icon-circle check" />
-          }
-          1 number
-        </li>
-      </ul>
+      <Rules
+        isInvalidPasswordCharacter={isInvalidPasswordCharacter}
+        isInvalidPasswordLetter={isInvalidPasswordLetter}
+        isInvalidPasswordNumber={isInvalidPasswordNumber}
+      />
 
       <label><span className="mark">*</span> New Password
         <input
