@@ -4,6 +4,7 @@ import { formatDate } from '../../helpers/helpers';
 import { questionData } from '../../constants/questions';
 import { Button } from '../Button/Button';
 import { Rules } from '../Rules/Rules';
+import { FormRow } from '../FormRow/FormRow';
 
 interface RegistrationDataStructure {
   password: string;
@@ -123,41 +124,25 @@ export const Form = () => {
         isInvalidPasswordNumber={isInvalidPasswordNumber}
       />
 
-      <label><span className="mark">*</span> New Password
-        <input
-          className={`password ${registrationData.password.length > 0 ? validationStyledPassword ? 'red' : 'green' : ''}`}
-          type="password"
-          name="password"
-          value={registrationData.password}
-          onChange={handleChangePassword}
-        />
-        {
-          (registrationData.password.length > 0) &&
-            <span className={`validation__text ${validationStyledPassword ? 'red' : 'green'}`}>
-              {
-                validationStyledPassword ? 'Too weak' : 'Good'
-              }
-            </span>
-        }
-      </label>
+      <FormRow
+        labelName="New Password"
+        validationStyled={validationStyledPassword}
+        borderStyled
+        type="password"
+        name="password"
+        value={registrationData.password}
+        onChange={handleChangePassword}
+      />
 
-      <label><span className="mark">*</span> Confirm New Password
-        <input
-          className={`password ${registrationData.passwordConfirm.length > 0 ? validationStyledPasswordConfirm ? 'red' : 'green' : ''}`}
-          type="password"
-          name="passwordConfirm"
-          value={registrationData.passwordConfirm}
-          onChange={handleChangePasswordConfirm}
-        />
-        {
-          (registrationData.passwordConfirm.length > 0) &&
-          <span className={`validation__text ${validationStyledPasswordConfirm ? 'red' : 'green'}`}>
-              {
-                validationStyledPasswordConfirm ? 'Passwords don\'t match' : 'Match'
-              }
-            </span>
-        }
-      </label>
+      <FormRow
+        labelName="Confirm New Password"
+        validationStyled={validationStyledPasswordConfirm}
+        borderStyled
+        type="password"
+        name="passwordConfirm"
+        value={registrationData.passwordConfirm}
+        onChange={handleChangePasswordConfirm}
+      />
 
       <label>Security Question
         <select
@@ -171,15 +156,13 @@ export const Form = () => {
         </select>
       </label>
 
-      <label><span className="mark">*</span> Answer
-        <input
-          className="input"
-          type="input"
-          name="answer"
-          value={registrationData.answer}
-          onChange={handleChangeAnswer}
-        />
-      </label>
+      <FormRow
+        labelName="Answer"
+        type="input"
+        name="anwser"
+        value={registrationData.answer}
+        onChange={handleChangeAnswer}
+      />
 
       <Button isButtonDisabled={isButtonDisabled} handleClick={handleClick} />
 
