@@ -4,6 +4,7 @@ import { formatDate } from '../../helpers/helpers';
 import { questionData } from '../../constants/questions';
 import { Button } from '../Button/Button';
 import { Rules } from '../Rules/Rules';
+import { ChangeEventWithElement, FormRow } from '../FormRow/FormRow';
 
 interface RegistrationDataStructure {
   password: string;
@@ -12,7 +13,7 @@ interface RegistrationDataStructure {
   answer: string;
 }
 
-interface QuestionStructure {
+export interface QuestionStructure {
   id: number;
   text: string;
 }
@@ -49,7 +50,8 @@ export const Form = () => {
         isInvalidAnswer ||
         isInvalidPasswordCharacter ||
         isInvalidPasswordLetter ||
-        isInvalidPasswordNumber
+        isInvalidPasswordNumber ||
+        (registrationData.password !== registrationData.passwordConfirm)
       ) {
       setIsButtonDisabled(true);
     } else {
@@ -58,7 +60,7 @@ export const Form = () => {
 
   }, [registrationData, isInvalidPassword, isInvalidPasswordConfirm, isInvalidAnswer, isInvalidPasswordCharacter, isInvalidPasswordLetter, isInvalidPasswordNumber])
 
-  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangePassword = (event: ChangeEventWithElement) => {
     setRegistrationData({ ...registrationData, password: event.target.value.trim() });
     (event.target.value.trim().length >= 8)
       ?
@@ -85,7 +87,7 @@ export const Form = () => {
         setIsInvalidPassword(true);
   };
 
-  const handleChangePasswordConfirm = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangePasswordConfirm = (event: ChangeEventWithElement) => {
     setRegistrationData({ ...registrationData, passwordConfirm: event.target.value.trim() });
     (event.target.value.trim())
       ?
@@ -94,13 +96,13 @@ export const Form = () => {
         setIsInvalidPasswordConfirm(true);
   };
 
-  const handleChangeQuestion = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeQuestion = (event: ChangeEventWithElement) => {
     const newQuestionValue = Number(event.target.value);
     setRegistrationData({ ...registrationData, question: newQuestionValue, answer: '' });
     setIsInvalidAnswer(true);
   };
 
-  const handleChangeAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeAnswer = (event: ChangeEventWithElement) => {
     setRegistrationData({ ...registrationData, answer: event.target.value.trim() });
     (event.target.value.trim())
       ?
@@ -123,63 +125,40 @@ export const Form = () => {
         isInvalidPasswordNumber={isInvalidPasswordNumber}
       />
 
-      <label><span className="mark">*</span> New Password
-        <input
-          className={`password ${registrationData.password.length > 0 ? validationStyledPassword ? 'red' : 'green' : ''}`}
-          type="password"
-          name="password"
-          value={registrationData.password}
-          onChange={handleChangePassword}
-        />
-        {
-          (registrationData.password.length > 0) &&
-            <span className={`validation__text ${validationStyledPassword ? 'red' : 'green'}`}>
-              {
-                validationStyledPassword ? 'Too weak' : 'Good'
-              }
-            </span>
-        }
-      </label>
+      <FormRow
+        labelName="New Password"
+        validationStyled={validationStyledPassword}
+        borderStyled
+        type="password"
+        name="password"
+        value={registrationData.password}
+        onChange={handleChangePassword}
+      />
 
-      <label><span className="mark">*</span> Confirm New Password
-        <input
-          className={`password ${registrationData.passwordConfirm.length > 0 ? validationStyledPasswordConfirm ? 'red' : 'green' : ''}`}
-          type="password"
-          name="passwordConfirm"
-          value={registrationData.passwordConfirm}
-          onChange={handleChangePasswordConfirm}
-        />
-        {
-          (registrationData.passwordConfirm.length > 0) &&
-          <span className={`validation__text ${validationStyledPasswordConfirm ? 'red' : 'green'}`}>
-              {
-                validationStyledPasswordConfirm ? 'Passwords don\'t match' : 'Match'
-              }
-            </span>
-        }
-      </label>
+      <FormRow
+        labelName="Confirm New Password"
+        validationStyled={validationStyledPasswordConfirm}
+        borderStyled
+        type="password"
+        name="passwordConfirm"
+        value={registrationData.passwordConfirm}
+        onChange={handleChangePasswordConfirm}
+      />
 
-      <label>Security Question
-        <select
-          className="select"
-          name="question"
-          onChange={handleChangeQuestion}
-        >
-          {
-            question.length > 0 && question.map(question => <option className="option" value={question.id} key={question.id}>{question.text}</option>)
-          }
-        </select>
-      </label>
+      <FormRow
+        labelName="Security Question"
+        name="question"
+        onChange={handleChangeQuestion}
+        question={question}
+      />
 
-      <label><span className="mark">*</span> Answer
-        <input
-          className="input"
-          type="input"
-          name="answer"
-          value={registrationData.answer}
-          onChange={handleChangeAnswer}
-        />
-      </label>
+      <FormRow
+        labelName="Answer"
+        type="input"
+        name="anwser"
+        value={registrationData.answer}
+        onChange={handleChangeAnswer}
+      />
 
       <Button isButtonDisabled={isButtonDisabled} handleClick={handleClick} />
 
