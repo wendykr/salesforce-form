@@ -1,3 +1,4 @@
+import { Input } from '../Input/Input';
 import './FormRow.scss';
 
 interface FormRowProps {
@@ -22,8 +23,9 @@ export const FormRow: React.FC<FormRowProps> = ({
 
   return (
     <label><span className="mark">*</span> {labelName}
-      <input
-        className={`password ${ borderStyled && (value.length > 0 ? validationStyled ? 'red' : 'green' : '') }`}
+      <Input
+        validationStyled={validationStyled}
+        borderStyled={borderStyled}
         type={type}
         name={name}
         value={value}
