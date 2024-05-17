@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div className="container">
-      <img className="logo" src="/logo-salesforce.svg" />
+      <img className="logo" src="logo-salesforce.svg" />
       <h1 className="title">Change Your Password</h1>
       <Form />
     </div>
