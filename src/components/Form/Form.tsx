@@ -50,7 +50,8 @@ export const Form = () => {
         isInvalidAnswer ||
         isInvalidPasswordCharacter ||
         isInvalidPasswordLetter ||
-        isInvalidPasswordNumber
+        isInvalidPasswordNumber ||
+        (registrationData.password !== registrationData.passwordConfirm)
       ) {
       setIsButtonDisabled(true);
     } else {
