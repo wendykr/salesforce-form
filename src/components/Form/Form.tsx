@@ -4,7 +4,7 @@ import { formatDate } from '../../helpers/helpers';
 import { questionData } from '../../constants/questions';
 import { Button } from '../Button/Button';
 import { Rules } from '../Rules/Rules';
-import { FormRow } from '../FormRow/FormRow';
+import { ChangeEventWithElement, FormRow } from '../FormRow/FormRow';
 
 interface RegistrationDataStructure {
   password: string;
@@ -13,7 +13,7 @@ interface RegistrationDataStructure {
   answer: string;
 }
 
-interface QuestionStructure {
+export interface QuestionStructure {
   id: number;
   text: string;
 }
@@ -60,7 +60,7 @@ export const Form = () => {
 
   }, [registrationData, isInvalidPassword, isInvalidPasswordConfirm, isInvalidAnswer, isInvalidPasswordCharacter, isInvalidPasswordLetter, isInvalidPasswordNumber])
 
-  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangePassword = (event: ChangeEventWithElement) => {
     setRegistrationData({ ...registrationData, password: event.target.value.trim() });
     (event.target.value.trim().length >= 8)
       ?
@@ -87,7 +87,7 @@ export const Form = () => {
         setIsInvalidPassword(true);
   };
 
-  const handleChangePasswordConfirm = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangePasswordConfirm = (event: ChangeEventWithElement) => {
     setRegistrationData({ ...registrationData, passwordConfirm: event.target.value.trim() });
     (event.target.value.trim())
       ?
@@ -96,13 +96,13 @@ export const Form = () => {
         setIsInvalidPasswordConfirm(true);
   };
 
-  const handleChangeQuestion = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeQuestion = (event: ChangeEventWithElement) => {
     const newQuestionValue = Number(event.target.value);
     setRegistrationData({ ...registrationData, question: newQuestionValue, answer: '' });
     setIsInvalidAnswer(true);
   };
 
-  const handleChangeAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeAnswer = (event: ChangeEventWithElement) => {
     setRegistrationData({ ...registrationData, answer: event.target.value.trim() });
     (event.target.value.trim())
       ?
@@ -145,17 +145,12 @@ export const Form = () => {
         onChange={handleChangePasswordConfirm}
       />
 
-      <label>Security Question
-        <select
-          className="select"
-          name="question"
-          onChange={handleChangeQuestion}
-        >
-          {
-            question.length > 0 && question.map(question => <option className="option" value={question.id} key={question.id}>{question.text}</option>)
-          }
-        </select>
-      </label>
+      <FormRow
+        labelName="Security Question"
+        name="question"
+        onChange={handleChangeQuestion}
+        question={question}
+      />
 
       <FormRow
         labelName="Answer"
