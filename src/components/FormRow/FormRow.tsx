@@ -1,5 +1,6 @@
 import { QuestionStructure } from '../Form/Form';
 import { Input } from '../Input/Input';
+import { Select } from '../Select/Select';
 import './FormRow.scss';
 
 export type ChangeEventWithElement = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>;
@@ -54,15 +55,7 @@ export const FormRow: React.FC<FormRowProps> = ({
               }
             </>)
             :
-            <select
-              className="select"
-              name="question"
-              onChange={onChange}
-            >
-              {
-                question && question.length > 0 && question.map(question => <option className="option" value={question.id} key={question.id}>{question.text}</option>)
-              }
-            </select>
+            <Select onChange={onChange} question={question} />
         }
       </label>
     )
