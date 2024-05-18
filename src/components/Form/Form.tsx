@@ -5,6 +5,8 @@ import { questionData } from '../../constants/questions';
 import { Button } from '../Button/Button';
 import { Rules } from '../Rules/Rules';
 import { ChangeEventWithElement, FormRow } from '../FormRow/FormRow';
+import { toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface RegistrationDataStructure {
   password: string;
@@ -113,7 +115,35 @@ export const Form = () => {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    console.log('done');
+
+    toast.success(`Success! Your password was changed.`, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+
+    setRegistrationData({
+      password: '',
+      passwordConfirm: '',
+      question: 1,
+      answer: ''
+    });
+
+    setIsButtonDisabled(true);
+  
+    setIsInvalidPassword(false);
+    setIsInvalidPasswordConfirm(false);
+    setIsInvalidAnswer(false);
+  
+    setIsInvalidPasswordCharacter(true);
+    setIsInvalidPasswordLetter(true);
+    setIsInvalidPasswordNumber(true);
   }
 
   return (
