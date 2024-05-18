@@ -49,7 +49,9 @@ export const FormRow: React.FC<FormRowProps> = ({
                   (value && value.length > 0) &&
                   <span className={`validation__text ${validationStyled ? 'red' : 'green'}`}>
                     {
-                      validationStyled ? 'Too weak' : 'Good'
+                      name === 'password'
+                      ? (validationStyled ? 'Too weak' : 'Good')
+                      : (validationStyled ? 'Passwords don\'t match' : 'Match')
                     }
                   </span>
               }
