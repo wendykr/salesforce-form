@@ -11,7 +11,7 @@ interface FormRowProps {
   borderStyled?: boolean
   type?: string;
   name: string;
-  value?: string;
+  value: string | number;
   onChange: (event: ChangeEventWithElement) => void;
   question?: QuestionStructure[];
 }
@@ -27,6 +27,10 @@ export const FormRow: React.FC<FormRowProps> = ({
     question
   }) => {
 
+    const isString = (value: string | number): value is string => {
+      return typeof value === 'string';
+    }
+
     return (
       <label>
         {
@@ -41,12 +45,12 @@ export const FormRow: React.FC<FormRowProps> = ({
                 borderStyled={borderStyled}
                 type={type}
                 name={name}
-                value={value || ''}
+                value={String(value)}
                 onChange={onChange}
               />
               {
                 borderStyled &&
-                  (value && value.length > 0) &&
+                  (isString(value)) && (value && value.length > 0) &&
                   <span className={`validation__text ${validationStyled ? 'red' : 'green'}`}>
                     {
                       name === 'password'
@@ -57,7 +61,7 @@ export const FormRow: React.FC<FormRowProps> = ({
               }
             </>)
             :
-            <Select onChange={onChange} question={question} />
+            <Select onChange={onChange} question={question} value={Number(value)} />
         }
       </label>
     )

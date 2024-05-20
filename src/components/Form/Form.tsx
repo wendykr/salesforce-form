@@ -146,6 +146,8 @@ export const Form = () => {
     setIsInvalidPasswordNumber(true);
   }
 
+  console.log('Registration Data:', registrationData);
+
   return (
     <div className="form">
       <p className="form__header">Enter a new password for <span className="bold">kiwebow991@losvtn.com</span>. Make sure to include at least:</p>
@@ -178,6 +180,7 @@ export const Form = () => {
       <FormRow
         labelName="Security Question"
         name="question"
+        value={registrationData.question}
         onChange={handleChangeQuestion}
         question={question}
       />
