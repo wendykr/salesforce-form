@@ -37,4 +37,4 @@ Stručný výčet znalostí, které jsem využila. *Uvádím znalosti týkajíc�
 - použití hotové **React knihovny** ([React Icons](https://react-icons.github.io/react-icons/), [React-Toastify](https://www.npmjs.com/package/react-toastify))
 
 ## Ukázka
-![screenshot](./screen/screen.jpg)
+<img src="./screen/vysledek.gif" alt="ukázka možného výsledku" width="50%" height="auto">
