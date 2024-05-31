@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Form.scss';
 import { formatDate } from '../../helpers/helpers';
 import { questionData } from '../../constants/questions';
@@ -39,6 +39,8 @@ export const Form = () => {
   const [isInvalidPasswordCharacter, setIsInvalidPasswordCharacter] = useState<boolean>(true);
   const [isInvalidPasswordLetter, setIsInvalidPasswordLetter] = useState<boolean>(true);
   const [isInvalidPasswordNumber, setIsInvalidPasswordNumber] = useState<boolean>(true);
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const validationStyledPassword = isInvalidPasswordCharacter || isInvalidPasswordLetter || isInvalidPasswordNumber;
   const validationStyledPasswordConfirm = registrationData.password !== registrationData.passwordConfirm;
@@ -102,6 +104,7 @@ export const Form = () => {
     const newQuestionValue = Number(event.target.value);
     setRegistrationData({ ...registrationData, question: newQuestionValue, answer: '' });
     setIsInvalidAnswer(true);
+    inputRef.current?.focus();
   };
 
   const handleChangeAnswer = (event: ChangeEventWithElement) => {
@@ -189,6 +192,7 @@ export const Form = () => {
         name="answer"
         value={registrationData.answer}
         onChange={handleChangeAnswer}
+        inputRef={inputRef}
       />
 
       <Button isButtonDisabled={isButtonDisabled} handleClick={handleClick} />

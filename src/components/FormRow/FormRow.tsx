@@ -14,6 +14,7 @@ interface FormRowProps {
   value: string | number;
   onChange: (event: ChangeEventWithElement) => void;
   question?: QuestionStructure[];
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 export const FormRow: React.FC<FormRowProps> = ({
@@ -24,7 +25,8 @@ export const FormRow: React.FC<FormRowProps> = ({
     name,
     value,
     onChange,
-    question
+    question,
+    inputRef
   }) => {
 
     const isString = (value: string | number): value is string => {
@@ -47,6 +49,7 @@ export const FormRow: React.FC<FormRowProps> = ({
                 name={name}
                 value={String(value)}
                 onChange={onChange}
+                inputRef={inputRef}
               />
               {
                 borderStyled &&
