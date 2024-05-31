@@ -7,6 +7,7 @@ interface InputProps {
   name: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -15,7 +16,8 @@ export const Input: React.FC<InputProps> = ({
     type,
     name,
     value,
-    onChange
+    onChange,
+    inputRef
   }) => {
 
   return (
@@ -25,6 +27,7 @@ export const Input: React.FC<InputProps> = ({
       name={name}
       value={value}
       onChange={onChange}
+      ref={inputRef}
     />
   )
 }
