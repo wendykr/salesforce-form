@@ -186,7 +186,7 @@ export const Form = () => {
       <FormRow
         labelName="Answer"
         type="input"
-        name="anwser"
+        name="answer"
         value={registrationData.answer}
         onChange={handleChangeAnswer}
       />
